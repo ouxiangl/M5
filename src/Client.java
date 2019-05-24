@@ -47,7 +47,7 @@ public class Client {
                 lloguer.getVehicle().getMarca() +
                 " " +
                 lloguer.getVehicle().getModel() + ": " +
-                (lloguer.precio() * EUROS_PER_UNITAT_DE_COST) + "€" + "\n";
+                (lloguer.getPrecio() * EUROS_PER_UNITAT_DE_COST) + "€" + "\n";
         }
 
         // afegeix informació final
@@ -58,7 +58,7 @@ public class Client {
     public double importTotal() {
         double total = 0;
         for (Lloguer lloguer: lloguers) {
-            total += lloguer.precio() * EUROS_PER_UNITAT_DE_COST;
+            total += lloguer.getPrecio() * EUROS_PER_UNITAT_DE_COST;
         }
         return total;
     }
@@ -68,5 +68,20 @@ public class Client {
             bonificacions +=lloguer.bonificacions();
         }
         return bonificacions;
+    }
+    public String informeHTML() {
+         String resultat = "<h1>Informe de lloguers</h1>\n" + 
+                "<p>Informe de lloguers del client <em>"+getNom()+" </em> (<strong>"+getNif()+"</strong>)</p>\n" + 
+                "<table>\n" + 
+                "<tr><td><strong>Marca</strong></td><td><strong>Model</strong></td><td><strong>Import</strong></td></tr> ";
+         for (Lloguer lloguer: lloguers) {
+             resultat += "    <tr><td>"+lloguer.getVehicle().getMarca()+
+                     "</td><td>"+lloguer.getVehicle().getModel()+
+                     "</td><td>"+lloguer.getPrecio() * EUROS_PER_UNITAT_DE_COST+"€</td></tr>\n";
+         }
+         resultat+="</table>\n" + 
+                "<p>Import a pagar: <em>" + importTotal() + "€</em></p>\n" + 
+                "<p>Punts guanyats: <em>" + bonificacionsTotals() + "</em></p>";
+         return resultat;
     }
 }

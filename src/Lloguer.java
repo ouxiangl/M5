@@ -29,7 +29,7 @@ public class Lloguer {
 	public int getDies() {
 		return this.dia;
 	}
-	public double precio() {
+	public double getPrecio() {
 		double precio = 0;
     	switch (getVehicle().getCategoria()) {
 	        case Vehicle.BASIC:
