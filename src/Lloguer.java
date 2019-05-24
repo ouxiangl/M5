@@ -29,26 +29,26 @@ public class Lloguer {
 	public int getDies() {
 		return this.dia;
 	}
-	public double quantitat() {
-		double quantitat = 0;
+	public double precio() {
+		double precio = 0;
     	switch (getVehicle().getCategoria()) {
 	        case Vehicle.BASIC:
-	            quantitat += EUROS_PER_UNITAT_DE_COST_VEHICLE_BASIC;
+	            precio += EUROS_PER_UNITAT_DE_COST_VEHICLE_BASIC;
 	            if (getDies() > DIES_INICI_VEHICLE_BASIC) {
-	                quantitat += (getDies() - DIES_INICI_VEHICLE_BASIC) * EUROS_PER_DIES_INICI_VEHICLE_BASIC;
+	                precio += (getDies() - DIES_INICI_VEHICLE_BASIC) * EUROS_PER_DIES_INICI_VEHICLE_BASIC;
 	            }
 	            break;
 	        case Vehicle.GENERAL:
-	            quantitat += EUROS_PER_UNITAT_DE_COST_VEHICLE_GENERAL;
+	            precio += EUROS_PER_UNITAT_DE_COST_VEHICLE_GENERAL;
 	            if (getDies() > DIES_INICI_VEHICLE_GENERAL) {
-	                quantitat += (getDies() - DIES_INICI_VEHICLE_GENERAL) * EUROS_PER_DIES_INICI_VEHICLE_GENERAL;
+	                precio += (getDies() - DIES_INICI_VEHICLE_GENERAL) * EUROS_PER_DIES_INICI_VEHICLE_GENERAL;
 	            }
 	            break;
 	        case Vehicle.LUXE:
-	            quantitat += getDies() * EUROS_PER_DIES_VEHICLE_LUXE;
+	            precio += getDies() * EUROS_PER_DIES_VEHICLE_LUXE;
 	            break;
 	    }
-		return quantitat;
+		return precio;
 	}
 	public int bonificacions() {
 		int bonificacions = 1;
