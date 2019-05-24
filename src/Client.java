@@ -46,7 +46,7 @@ public class Client {
             double quantitat = lloguer.quantitat();
             
             // afegeix lloguers freqüents
-            bonificacions +=bonificacionsDeLloguer(lloguer);
+            bonificacions +=lloguer.bonificacions();
             // composa els resultats d'aquest lloguer
             resultat += "\t" +
                 lloguer.getVehicle().getMarca() +
@@ -60,13 +60,5 @@ public class Client {
         resultat += "Import a pagar: " + total + "€\n" +
             "Punts guanyats: " + bonificacions + "\n";
         return resultat;
-    }
-    public int bonificacionsDeLloguer(Lloguer lloguer) {
-        int bonificacions = 1;
-        if (lloguer.getVehicle().getCategoria() == Vehicle.LUXE &&
-                lloguer.getDies()>1 ) {
-            bonificacions ++;
-        }
-        return bonificacions;
     }
 }
